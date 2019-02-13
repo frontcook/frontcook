@@ -13,6 +13,12 @@
         <img class="book-load" @click.stop="returnLoadUrl(book.url)" src="static/download.svg">
       </div>
     </li>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="9"
+      @current-change="currentChangeHandler"
+      :total="bookNum"></el-pagination>
   </ul>
 </div>
 </template>
@@ -22,30 +28,48 @@ import bookStore from '../bookStore'
 export default {
   name: 'main-l',
   mounted () {
-    this.bookStoreAll = JSON.parse(JSON.stringify(this.bookStore))
+    this.initPage()
   },
   data () {
     return {
       bookStore,
       bookStoreAll: [],
-      inputbook: ''
+      inputbook: '',
+      bookNum: 0
+    }
+  },
+  computed: {
+    totalPageNum () {
+      return this.bookStoreAll.length / 2
     }
   },
   watch: {
     inputbook (val) {
-      var regBook = new RegExp(val, 'i')
-      var bookStoreN = []
-      for (var i = 0; i < this.bookStore.length; i++) {
-        if (regBook.test(this.bookStore[i].name)) {
-          bookStoreN.push(Object.assign({}, this.bookStore[i]))
+      if (val) {
+        var regBook = new RegExp(val, 'i')
+        var bookStoreN = []
+        for (var i = 0; i < this.bookStore.length; i++) {
+          if (regBook.test(this.bookStore[i].name)) {
+            bookStoreN.push(Object.assign({}, this.bookStore[i]))
+          }
         }
+        this.bookNum = bookStoreN.length
+        this.bookStoreAll = bookStoreN
+      } else {
+        this.initPage()
       }
-      this.bookStoreAll = bookStoreN
     }
   },
   methods: {
     returnLoadUrl (url) {
       window.open(url)
+    },
+    currentChangeHandler (pageNum) {
+      this.bookStoreAll = this.bookStore.slice((pageNum - 1) * 9, pageNum * 9)
+    },
+    initPage () {
+      this.bookNum = this.bookStore.length
+      this.bookStoreAll = this.bookStore.slice(0, 9)
     }
   }
 }
@@ -58,7 +82,6 @@ export default {
 }
 .main-book-lists {
   width: 800px;
-  height: 100vh;
   background-color: #f2f2f2;
   margin: 20px auto;
   display: flex;
