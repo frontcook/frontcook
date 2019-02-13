@@ -36,9 +36,14 @@
       </div>
     </ul>
     <div class="book-content-right">
-      <div class="right-1"></div>
+      <div class="right-1">
+        <span>
+          仅供学习使用!如有侵权,
+          请发送邮件至442747096@qq.com.
+          会在48小时之内处理,谢谢!
+        </span>
+      </div>
       <div class="right-2"></div>
-      <div class="right-3"></div>
     </div>
   </div>
 
@@ -200,9 +205,18 @@ export default {
 
 .book-content-right .right-1 {
   width: 100%;
-  height: 300px;
+  height: 150px;
+  display: flex;
+  padding: 10px;
+  box-sizing: border-box;
+  align-items: center;
   background-color: #ffffff;
   border-radius: 10px;
+}
+.book-content-right .right-1 span {
+  font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+  text-indent: 2em;
+  word-break: break-all;
 }
 
 .book-content-right .right-2 {
@@ -211,5 +225,9 @@ export default {
   height: 300px;
   background-color: #ffffff;
   border-radius: 10px;
+}
+
+.el-button.is-circle {
+  padding: 7px;
 }
 </style>
