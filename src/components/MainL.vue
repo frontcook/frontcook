@@ -1,27 +1,47 @@
 <template>
 <div>
   <div class="search">
-    <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="inputbook"></el-input>
-  </div>
-  <ul class="main-book-lists">
-    <li v-for="(book, item) in bookStoreAll" :key="item">
-      <div>
-        <img :src="'static/bookimg/' + book.img" width="150" height="189">
-      </div>
-      <div class="book-name-wrapper">
-        <span class="book-name" :title="book.name">{{book.name}}</span>
-        <img class="book-load" @click.stop="returnLoadUrl(book.url)" src="static/download.svg">
-      </div>
-    </li>
-    <div class="book-page">
-      <el-pagination
-        background
-        layout="prev, pager, next"
-        :page-size="9"
-        @current-change="currentChangeHandler"
-        :total="bookNum"></el-pagination>
+    <div class="search-button-wrapper" >
+      <el-button
+        type="info"
+        size="mini"
+        @click="choiceLang(item.key)"
+        round v-for="item in langArr"
+        :key="item">
+        {{item.name}}
+      </el-button>
     </div>
-  </ul>
+    <div class="search-input-wrapper">
+      <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="inputbook"></el-input>
+    </div>
+  </div>
+  <div class="book-content-wrapper">
+    <ul class="main-book-lists">
+      <li v-for="(book, item) in bookStoreAll" :key="item">
+        <div>
+          <img :src="'static/bookimg/' + book.img" width="150" height="189">
+        </div>
+        <div class="book-name-wrapper">
+          <span class="book-name" :title="book.name">{{book.name}}</span>
+          <el-button type="info" icon="el-icon-download" circle @click.stop="returnLoadUrl(book.url)" ></el-button>
+        </div>
+      </li>
+      <div class="book-page">
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :page-size="9"
+          @current-change="currentChangeHandler"
+          :total="bookNum"></el-pagination>
+      </div>
+    </ul>
+    <div class="book-content-right">
+      <div class="right-1"></div>
+      <div class="right-2"></div>
+      <div class="right-3"></div>
+    </div>
+  </div>
+
 </div>
 </template>
 
@@ -37,28 +57,19 @@ export default {
       bookStore,
       bookStoreAll: [],
       inputbook: '',
-      bookNum: 0
-    }
-  },
-  computed: {
-    totalPageNum () {
-      return this.bookStoreAll.length / 2
+      bookNum: 0,
+      langArr: [
+        {name: '全部', key: 'all'},
+        {name: 'c/c++', key: 'c'},
+        {name: 'java', key: 'java'},
+        {name: 'javascript', key: 'javascript'},
+        {name: 'rust', key: 'rust'}
+      ]
     }
   },
   watch: {
     inputbook (val) {
-      if (val) {
-        var bookStoreN = []
-        for (var i = 0; i < this.bookStore.length; i++) {
-          if (bookStore[i].name.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
-            bookStoreN.push(Object.assign({}, this.bookStore[i]))
-          }
-        }
-        this.bookNum = bookStoreN.length
-        this.bookStoreAll = bookStoreN
-      } else {
-        this.initPage()
-      }
+      this.searchHandler(val)
     }
   },
   methods: {
@@ -71,6 +82,23 @@ export default {
     initPage () {
       this.bookNum = this.bookStore.length
       this.bookStoreAll = this.bookStore.slice(0, 9)
+    },
+    choiceLang (lang) {
+      this.searchHandler(lang)
+    },
+    searchHandler (val) {
+      if (val && val !== 'all') {
+        var bookStoreN = []
+        for (var i = 0; i < this.bookStore.length; i++) {
+          if (bookStore[i].name.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
+            bookStoreN.push(Object.assign({}, this.bookStore[i]))
+          }
+        }
+        this.bookNum = bookStoreN.length
+        this.bookStoreAll = bookStoreN.slice(0, 9)
+      } else {
+        this.initPage()
+      }
     }
   }
 }
@@ -78,13 +106,26 @@ export default {
 
 <style scoped>
 .search {
-  width: 400px;
+  width: 900px;
+  display: flex;
   margin: 20px auto;
 }
+.search-button-wrapper {
+  width: 50%;
+}
+.search-input-wrapper {
+  width: 50%;
+}
+.book-content-wrapper {
+  display: flex;
+  width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #82384e;
+}
+
 .main-book-lists {
   width: 800px;
-  background-color: #f2f2f2;
-  margin: 20px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -97,11 +138,11 @@ export default {
   list-style: none;
   width: 200px;
   box-sizing: border-box;
-  height: 265px;
+  height: 275px;
   margin: 20px;
   padding: 20px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #fafafa;
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
 }
@@ -151,5 +192,24 @@ export default {
   position: absolute;
   bottom: 10px;
   margin: auto;
+}
+
+.book-content-right {
+  width: 200px;
+}
+
+.book-content-right .right-1 {
+  width: 100%;
+  height: 300px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.book-content-right .right-2 {
+  margin-top: 20px;
+  width: 100%;
+  height: 300px;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 </style>
