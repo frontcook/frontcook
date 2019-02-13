@@ -23,5 +23,4 @@ const store = [{
   name: '21天学通c++',
   url: 'www.baidu.com'
 }]
-
 export default store
