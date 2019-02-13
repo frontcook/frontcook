@@ -13,12 +13,14 @@
         <img class="book-load" @click.stop="returnLoadUrl(book.url)" src="static/download.svg">
       </div>
     </li>
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :page-size="9"
-      @current-change="currentChangeHandler"
-      :total="bookNum"></el-pagination>
+    <div class="book-page">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :page-size="9"
+        @current-change="currentChangeHandler"
+        :total="bookNum"></el-pagination>
+    </div>
   </ul>
 </div>
 </template>
@@ -46,10 +48,9 @@ export default {
   watch: {
     inputbook (val) {
       if (val) {
-        var regBook = new RegExp(val, 'i')
         var bookStoreN = []
         for (var i = 0; i < this.bookStore.length; i++) {
-          if (regBook.test(this.bookStore[i].name)) {
+          if (bookStore[i].name.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
             bookStoreN.push(Object.assign({}, this.bookStore[i]))
           }
         }
@@ -88,6 +89,8 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   overflow: hidden;
+  padding-bottom: 40px;
+  position: relative;
 }
 
 .main-book-lists li {
@@ -143,5 +146,10 @@ export default {
   width: 32px;
   height: 32px;
   box-shadow: 0 2px 2px 0 #cccccc;
+}
+.book-page {
+  position: absolute;
+  bottom: 10px;
+  margin: auto;
 }
 </style>
