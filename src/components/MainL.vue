@@ -65,16 +65,16 @@ export default {
       bookNum: 0,
       langArr: [
         {name: '全部', key: 'all'},
-        {name: 'c/c++', key: 'c'},
+        {name: 'c/c++', key: 'c/c++'},
         {name: 'java', key: 'java'},
-        {name: 'javascript', key: 'javascript'},
+        {name: 'javascript', key: 'js'},
         {name: 'rust', key: 'rust'}
       ]
     }
   },
   watch: {
     inputbook (val) {
-      this.searchHandler(val)
+      this.searchHandler(val, false)
     }
   },
   methods: {
@@ -89,13 +89,15 @@ export default {
       this.bookStoreAll = this.bookStore.slice(0, 9)
     },
     choiceLang (lang) {
-      this.searchHandler(lang)
+      this.searchHandler(lang, true)
     },
-    searchHandler (val) {
+    searchHandler (val, key) {
       if (val && val !== 'all') {
         var bookStoreN = []
         for (var i = 0; i < this.bookStore.length; i++) {
-          if (bookStore[i].name.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
+          if (bookStore[i].name.toLowerCase().indexOf(val.toLowerCase()) !== -1 && !key) {
+            bookStoreN.push(Object.assign({}, this.bookStore[i]))
+          } else if (bookStore[i].key.toLowerCase().indexOf(val.toLowerCase()) !== -1 && key) {
             bookStoreN.push(Object.assign({}, this.bookStore[i]))
           }
         }
