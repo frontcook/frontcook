@@ -27,7 +27,6 @@ export default {
 <style scoped>
   .title {
     height: 150px;
-    background-image: url('../../static/title.jpg');
     position: relative;
   }
 
