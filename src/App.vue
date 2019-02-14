@@ -7,14 +7,10 @@
 
 <script>
 import HeaderL from './components/HeadL'
-import MainL from './components/MainL'
-import FooterL from './components/FooterL'
 export default {
   name: 'App',
   components: {
-    HeaderL,
-    MainL,
-    FooterL
+    HeaderL
   }
 }
 </script>
