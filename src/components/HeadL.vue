@@ -1,8 +1,8 @@
 <template>
   <div class="title">
     <ul class="title-book-list">
-      <li v-for="(menu, index) in menus" :key="index" :class="{'menu-actived': $route.path === menu.path}">
-        <router-link :to="menu.path">{{menu.name}}</router-link>
+      <li v-for="(menu, index) in menus" :key="index">
+        <router-link :to="menu.path" exact class="default-a">{{menu.name}}</router-link>
       </li>
     </ul>
   </div>
@@ -32,8 +32,7 @@ export default {
 
   .title-book-list {
     color: #ffffff;
-    height: 50px;
-    line-height: 50px;
+    height: 30px;
     display: flex;
     position: absolute;
     top: 20px;
@@ -46,12 +45,14 @@ export default {
     font-size: 16px;
     margin-right: 30px;
   }
-  .title-book-list li a {
+  .title-book-list li .default-a {
     text-decoration: none;
-    color: #44232f;
+    color: #6a7077;
   }
-  .menu-actived {
-    font-size: 20px !important;
-    color: #44232e;
+
+  .router-link-active {
+    padding-bottom: 3px;
+    color: #393c40 !important;
+    border-bottom: 2px solid rgb(51,136,255);
   }
 </style>

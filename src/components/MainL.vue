@@ -125,6 +125,7 @@ export default {
 }
 .search-button-wrapper {
   width: 50%;
+  line-height: 40px;
 }
 .search-input-wrapper {
   width: 50%;
