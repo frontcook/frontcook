@@ -41,10 +41,13 @@
         <span>
           仅供学习使用!如有侵权,
           请发送邮件至442747096@qq.com.
-          会在48小时之内处理,谢谢!
+          会在72小时之内处理,谢谢!
         </span>
       </div>
-      <div class="right-2"></div>
+      <div class="right-2">
+        <div class="thank">感谢支持</div>
+        <img src="static/wx.jpg" width="100%">
+      </div>
     </div>
   </div>
 
@@ -220,16 +223,23 @@ export default {
 .book-content-right .right-1 span {
   text-indent: 2em;
   word-break: break-all;
+  font-size: 14px;
 }
 
 .book-content-right .right-2 {
   margin-top: 20px;
   width: 100%;
   height: 300px;
+  overflow: hidden;
   background-color: #ffffff;
   border-radius: 10px;
 }
 
+.book-content-right .right-2 .thank {
+  margin: 5px auto;
+  text-align: center;
+  font-size: 14px;
+}
 .el-button.is-circle {
   padding: 7px;
 }

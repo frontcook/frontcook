@@ -43,7 +43,7 @@ export default {
     list-style: none;
     font-family: "黑体";
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     margin-right: 30px;
   }
   .title-book-list li a {
@@ -51,7 +51,7 @@ export default {
     color: #44232f;
   }
   .menu-actived {
-    font-size: 25px !important;
+    font-size: 20px !important;
     color: #44232e;
   }
 </style>
