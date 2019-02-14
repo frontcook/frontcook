@@ -6,8 +6,9 @@
         type="info"
         size="mini"
         @click="choiceLang(item.key)"
+        :class="{isactived: item.key === flagKey}"
         round v-for="item in langArr"
-        :key="item">
+        :key="item.key">
         {{item.name}}
       </el-button>
     </div>
@@ -69,7 +70,8 @@ export default {
         {name: 'java', key: 'java'},
         {name: 'javascript', key: 'js'},
         {name: 'rust', key: 'rust'}
-      ]
+      ],
+      flagKey: 'all'
     }
   },
   watch: {
@@ -89,6 +91,7 @@ export default {
       this.bookStoreAll = this.bookStore.slice(0, 9)
     },
     choiceLang (lang) {
+      this.flagKey = lang
       this.searchHandler(lang, true)
     },
     searchHandler (val, key) {
@@ -164,7 +167,6 @@ export default {
 .book-name-wrapper {
   font-size: 12px;
   margin-top: 10px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 900;
   line-height: 40px;
   height: 40px;
@@ -216,7 +218,6 @@ export default {
   border-radius: 10px;
 }
 .book-content-right .right-1 span {
-  font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
   text-indent: 2em;
   word-break: break-all;
 }
@@ -231,5 +232,14 @@ export default {
 
 .el-button.is-circle {
   padding: 7px;
+}
+
+.isactived {
+  background: #444444;
+  border-color: #444444;
+}
+
+.el-button {
+  font-family: 'yaya'
 }
 </style>

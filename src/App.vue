@@ -1,8 +1,7 @@
 <template>
   <div>
     <header-l />
-    <main-l />
-    <footer-l />
+    <router-view></router-view>
   </div>
 </template>
 
@@ -28,5 +27,15 @@ export default {
 
 body, html {
   overflow-x: hidden;
+}
+
+body {
+  background-color: #eeeeee;
+  font-family: 'yaya'
+}
+
+@font-face {
+  font-family: 'yaya';
+  src: url('../static/fonts/肥滚滚.ttf');
 }
 </style>

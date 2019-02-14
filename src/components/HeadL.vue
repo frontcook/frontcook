@@ -1,6 +1,10 @@
 <template>
   <div class="title">
-    <span class="title-book-list">{{msg}}</span>
+    <ul class="title-book-list">
+      <li v-for="(menu, index) in menus" :key="index" :class="{'menu-actived': $route.path === menu.path}">
+        <router-link :to="menu.path">{{menu.name}}</router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -9,7 +13,11 @@ export default {
   name: 'first-title',
   data () {
     return {
-      msg: '书单'
+      menus: [
+        {name: '主页', path: '/'},
+        {name: '书单', path: '/book'},
+        {name: '管理系统', path: '/theme'}
+      ]
     }
   }
 }
@@ -18,16 +26,32 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .title {
-    height: 200px;
-    line-height: 200px;
-    text-align: center;
+    height: 150px;
     background-image: url('../../static/title.jpg');
+    position: relative;
   }
 
   .title-book-list {
-    padding-top: 20px;
-    font-size: 40px;
     color: #ffffff;
-    display: block;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+  }
+  .title-book-list li {
+    list-style: none;
+    font-family: 'yaya';
+    font-size: 20px;
+    margin-right: 30px;
+  }
+  .title-book-list li a {
+    text-decoration: none;
+    color: #44232f;
+  }
+  .menu-actived {
+    font-size: 25px !important;
+    color: #44232e;
   }
 </style>
