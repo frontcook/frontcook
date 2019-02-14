@@ -240,6 +240,7 @@ export default {
 }
 
 .el-button {
-  font-family: 'yaya'
+  font-family: 'yaya';
+  font-weight: bold;
 }
 </style>

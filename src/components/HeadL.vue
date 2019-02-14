@@ -41,7 +41,8 @@ export default {
   }
   .title-book-list li {
     list-style: none;
-    font-family: 'yaya';
+    font-family: "黑体";
+    font-weight: bold;
     font-size: 20px;
     margin-right: 30px;
   }

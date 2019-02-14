@@ -30,12 +30,12 @@ body, html {
 }
 
 body {
-  background-color: #eeeeee;
-  font-family: 'yaya'
+  background: url('../static/bg_3.jpg');
+  font-family: yaya, 'Times New Roman', Georgia, Serif;
 }
 
 @font-face {
-  font-family: 'yaya';
-  src: url('../static/fonts/肥滚滚.ttf');
+  font-family: yaya;
+  src: url('../static/fonts/fat3.otf');
 }
 </style>
