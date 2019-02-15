@@ -38,6 +38,16 @@ const esStore = [{
   key: 'js',
   name: 'WebKit技术内幕',
   url: 'https://pan.baidu.com/s/1iBwll4Yq1mvPFPAQbou6aw'
+}, {
+  img: '你不知道的JavaScript.jpg',
+  key: 'js',
+  name: '你不知道的JavaScript',
+  url: 'https://pan.baidu.com/s/1nnynw7Rsl_l4Wv9LhZjXFg'
+}, {
+  img: 'node与express开发.jpg',
+  key: 'js',
+  name: 'node与express开发',
+  url: 'https://pan.baidu.com/s/17svB0MzzFK1rjlsARuhndA'
 }]
 
 export default esStore

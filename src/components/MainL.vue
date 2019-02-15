@@ -11,6 +11,7 @@
         :key="item.key">
         {{item.name}}
       </el-button>
+      <i class="el-icon-more"></i>
     </div>
     <div class="search-input-wrapper">
       <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="inputbook"></el-input>
@@ -72,7 +73,7 @@ export default {
         {name: 'c/c++', key: 'c/c++'},
         {name: 'java', key: 'java'},
         {name: '前端', key: 'js'},
-        {name: 'rust', key: 'rust'}
+        {name: 'python', key: 'python'}
       ],
       flagKey: 'all'
     }
