@@ -71,7 +71,7 @@ export default {
         {name: '全部', key: 'all'},
         {name: 'c/c++', key: 'c/c++'},
         {name: 'java', key: 'java'},
-        {name: 'javascript', key: 'js'},
+        {name: '前端', key: 'js'},
         {name: 'rust', key: 'rust'}
       ],
       flagKey: 'all'

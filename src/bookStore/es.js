@@ -28,6 +28,16 @@ const esStore = [{
   key: 'js',
   name: 'HTML5 CANVAS基础教程',
   url: 'https://pan.baidu.com/s/1YEcBzxDT03pUOgolawftug'
+}, {
+  img: '深入浅出Node.js.jpg',
+  key: 'js',
+  name: '深入浅出Node.js',
+  url: 'https://pan.baidu.com/s/1B48LF_qD4gmPvhDI6waVrQ'
+}, {
+  img: 'WebKit技术内幕.jpg',
+  key: 'js',
+  name: 'WebKit技术内幕',
+  url: 'https://pan.baidu.com/s/1iBwll4Yq1mvPFPAQbou6aw'
 }]
 
 export default esStore
