@@ -14,8 +14,7 @@ export default {
   data () {
     return {
       menus: [
-        {name: '主页', path: '/'},
-        {name: '书单', path: '/book'},
+        {name: '书单', path: '/'},
         {name: '管理系统', path: '/theme'}
       ]
     }

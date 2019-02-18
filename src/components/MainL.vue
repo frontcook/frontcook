@@ -2,6 +2,7 @@
 <div>
   <div class="search">
     <div class="search-button-wrapper" >
+      <span class="label">热门标签：</span>
       <el-button
         type="info"
         size="mini"
@@ -11,7 +12,6 @@
         :key="item.key">
         {{item.name}}
       </el-button>
-      <i class="el-icon-more"></i>
     </div>
     <div class="search-input-wrapper">
       <el-input placeholder="请输入内容" prefix-icon="el-icon-search" v-model="inputbook"></el-input>
@@ -127,6 +127,12 @@ export default {
 .search-button-wrapper {
   width: 50%;
   line-height: 40px;
+}
+
+.search-button-wrapper .label {
+  font-size: 12px;
+  font-family: '黑体';
+  font-weight: bold;
 }
 .search-input-wrapper {
   width: 50%;
