@@ -73,7 +73,8 @@ export default {
         {name: 'c/c++', key: 'c/c++'},
         {name: 'java', key: 'java'},
         {name: '前端', key: 'js'},
-        {name: 'python', key: 'python'}
+        {name: 'python', key: 'python'},
+        {name: 'go', key: 'go'}
       ],
       flagKey: 'all'
     }
@@ -125,7 +126,7 @@ export default {
   margin: 20px auto;
 }
 .search-button-wrapper {
-  width: 50%;
+  width: 70%;
   line-height: 40px;
 }
 
@@ -135,7 +136,7 @@ export default {
   font-weight: bold;
 }
 .search-input-wrapper {
-  width: 50%;
+  width: 30%;
 }
 .book-content-wrapper {
   display: flex;

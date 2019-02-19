@@ -33,6 +33,36 @@ const cStore = [{
   key: 'c/c++',
   name: 'C和指针',
   url: 'https://pan.baidu.com/s/1LsFfbHU8t4IxxjHu0TCfUg'
+}, {
+  img: 'Effective.jpg',
+  key: 'c/c++',
+  name: 'Effective C++中文版(第三版)',
+  url: 'https://pan.baidu.com/s/1r4tPXTpC4UPwSusWKzhtTw'
+}, {
+  img: 'STL源码剖析.jpg',
+  key: 'c/c++',
+  name: 'STL源码剖析',
+  url: 'https://pan.baidu.com/s/1dmVTvsRqhh2dC06x-raXxg'
+}, {
+  img: 'C++编程思想.jpg',
+  key: 'c/c++',
+  name: 'C++编程思想(第二卷)',
+  url: 'https://pan.baidu.com/s/1Kg_aEAnrDUDPtg67aZQlyw'
+}, {
+  img: '大话设计模式C++.jpg',
+  key: 'c/c++',
+  name: '大话设计模式C++',
+  url: 'https://pan.baidu.com/s/1PM54tvVVMj-GVBu7z8Qt5w'
+}, {
+  img: 'C++编程思想[第一卷].jpg',
+  key: 'c/c++',
+  name: 'C++编程思想[第一卷]',
+  url: 'https://pan.baidu.com/s/1vQEbsH-h9qawXQ9hFgFb6g'
+}, {
+  img: '易学C++.jpg',
+  key: 'c/c++',
+  name: '易学C++',
+  url: 'https://pan.baidu.com/s/1oedtDYV5uqFRTLioPvuvcw'
 }]
 
 export default cStore
