@@ -49,6 +49,9 @@
         <div class="thank">感谢支持</div>
         <img src="static/wx.jpg" width="100%">
       </div>
+      <div class="right-3">
+        如有链接失效问题,请联系上诉邮箱!
+      </div>
     </div>
   </div>
 
@@ -66,6 +69,7 @@ export default {
     return {
       bookStore,
       bookStoreAll: [],
+      bookStoreSelect: [],
       inputbook: '',
       bookNum: 0,
       langArr: [
@@ -81,7 +85,7 @@ export default {
   },
   watch: {
     inputbook (val) {
-      this.searchHandler(val, false)
+      this.searchInputHandler(val)
     }
   },
   methods: {
@@ -89,28 +93,44 @@ export default {
       window.open(url)
     },
     currentChangeHandler (pageNum) {
-      this.bookStoreAll = this.bookStore.slice((pageNum - 1) * 9, pageNum * 9)
+      this.bookStoreAll = this.bookStoreSelect.slice((pageNum - 1) * 9, pageNum * 9)
     },
     initPage () {
       this.bookNum = this.bookStore.length
+      this.bookStoreSelect = JSON.parse(JSON.stringify(this.bookStore))
       this.bookStoreAll = this.bookStore.slice(0, 9)
     },
     choiceLang (lang) {
       this.flagKey = lang
-      this.searchHandler(lang, true)
+      this.searchBtnHandler(lang)
     },
-    searchHandler (val, key) {
-      if (val && val !== 'all') {
-        var bookStoreN = []
-        for (var i = 0; i < this.bookStore.length; i++) {
-          if (bookStore[i].name.toLowerCase().indexOf(val.toLowerCase()) !== -1 && !key) {
-            bookStoreN.push(Object.assign({}, this.bookStore[i]))
-          } else if (bookStore[i].key.toLowerCase().indexOf(val.toLowerCase()) !== -1 && key) {
-            bookStoreN.push(Object.assign({}, this.bookStore[i]))
+
+    searchInputHandler (val) {
+      var searchbook = []
+      if (val) {
+        console.log(this.bookStoreSelect)
+        for (var i = 0; i < this.bookStoreSelect.length; i++) {
+          if (this.bookStoreSelect[i].name.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
+            searchbook.push(Object.assign({}, this.bookStoreSelect[i]))
           }
         }
-        this.bookNum = bookStoreN.length
-        this.bookStoreAll = bookStoreN.slice(0, 9)
+        this.bookNum = searchbook.length
+        this.bookStoreAll = searchbook.slice(0, 9)
+      } else {
+        this.bookStoreAll = Object.assign({}, this.bookStoreSelect)
+      }
+    },
+
+    searchBtnHandler (val) {
+      this.bookStoreSelect = []
+      if (val !== 'all') {
+        for (var i = 0; i < this.bookStore.length; i++) {
+          if (this.bookStore[i].key.toLowerCase().indexOf(val.toLowerCase()) !== -1) {
+            this.bookStoreSelect.push(Object.assign({}, this.bookStore[i]))
+          }
+        }
+        this.bookNum = this.bookStoreSelect.length
+        this.bookStoreAll = this.bookStoreSelect.slice(0, 9)
       } else {
         this.initPage()
       }
@@ -240,6 +260,17 @@ export default {
   width: 100%;
   height: 300px;
   overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.book-content-right .right-3 {
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-indent: 1em;
   background-color: #ffffff;
   border-radius: 10px;
 }
