@@ -19,7 +19,7 @@
   </div>
   <div class="book-content-wrapper">
     <ul class="main-book-lists">
-      <li v-for="(book, item) in bookStoreAll" :key="item">
+      <li v-for="(book, item) in bookStoreRender" :key="item">
         <div>
           <img :src="'static/bookimg/' + book.img" width="150" height="189">
         </div>
@@ -59,6 +59,7 @@
 </template>
 
 <script>
+// bookStore 为全部数据, bookStoreRender 为当前页渲染的数据, bookStoreSearch 为当前选择项下的所有数据
 import bookStore from '../bookStore'
 export default {
   name: 'main-l',
@@ -68,7 +69,7 @@ export default {
   data () {
     return {
       bookStore,
-      bookStoreAll: [],
+      bookStoreRender: [],
       bookStoreSelect: [],
       inputbook: '',
       bookNum: 0,
@@ -93,12 +94,12 @@ export default {
       window.open(url)
     },
     currentChangeHandler (pageNum) {
-      this.bookStoreAll = this.bookStoreSelect.slice((pageNum - 1) * 9, pageNum * 9)
+      this.bookStoreRender = this.bookStoreSelect.slice((pageNum - 1) * 9, pageNum * 9)
     },
     initPage () {
       this.bookNum = this.bookStore.length
       this.bookStoreSelect = JSON.parse(JSON.stringify(this.bookStore))
-      this.bookStoreAll = this.bookStore.slice(0, 9)
+      this.bookStoreRender = this.bookStore.slice(0, 9)
     },
     choiceLang (lang) {
       this.flagKey = lang
@@ -115,9 +116,9 @@ export default {
           }
         }
         this.bookNum = searchbook.length
-        this.bookStoreAll = searchbook.slice(0, 9)
+        this.bookStoreRender = searchbook.slice(0, 9)
       } else {
-        this.bookStoreAll = Object.assign({}, this.bookStoreSelect)
+        this.bookStoreRender = this.bookStoreSelect.slice(0, 9)
       }
     },
 
@@ -130,7 +131,7 @@ export default {
           }
         }
         this.bookNum = this.bookStoreSelect.length
-        this.bookStoreAll = this.bookStoreSelect.slice(0, 9)
+        this.bookStoreRender = this.bookStoreSelect.slice(0, 9)
       } else {
         this.initPage()
       }
