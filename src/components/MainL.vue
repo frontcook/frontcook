@@ -102,6 +102,7 @@ export default {
       this.bookStoreRender = this.bookStore.slice(0, 9)
     },
     choiceLang (lang) {
+      this.inputbook = ''
       this.flagKey = lang
       this.searchBtnHandler(lang)
     },

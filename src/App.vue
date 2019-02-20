@@ -26,7 +26,10 @@ body, html {
 }
 
 body {
-  background: url('../static/bg_3.jpg');
+  background: -webkit-radial-gradient(circle, #b1d5e1, #c3d4da);
+  background: -o-radial-gradient(circle, #b1d5e1, #c3d4da);
+  background: -moz-radial-gradient(circle, #b1d5e1, #c3d4da);
+  background: radial-gradient(circle, #b1d5e1, #c3d4da);
   font-family: yaya, 'Times New Roman', Georgia, Serif;
 }
 

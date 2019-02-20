@@ -1,6 +1,8 @@
 <template>
   <div>
-    <el-input v-model="selectValue" placeholder="请输入内容"></el-input>
+    <ul>
+      <li></li>
+    </ul>
     <div style="width: 600px;height: 500px;" ref="myEchart"></div>
   </div>
 </template>
@@ -13,7 +15,10 @@ export default {
   data () {
     return {
       selectValue: '',
-      timeout: true
+      timeout: true,
+      langArr: [{
+        name: ''
+      }]
     }
   },
   watch: {
@@ -23,7 +28,7 @@ export default {
         this.initData(val)
         setTimeout(() => {
           this.timeout = true
-        }, 3000)
+        }, 400)
       }
     }
   },
@@ -58,9 +63,9 @@ export default {
             bookCharts.push([average, numRaters, parseFloat(size), title])
           }
           const options = {
-            backgroundColor: 'rgba(255, 255, 255, 0)',
+            backgroundColor: 'rgba(255, 255, 255, 1)',
             title: {
-              text: 'javascript书籍参与数和评分'
+              text: this.selectValue + '书籍参与数和评分'
             },
             xAxis: {
               splitLine: {
@@ -82,7 +87,7 @@ export default {
               data: bookCharts,
               type: 'scatter',
               symbolSize: function (dat) {
-                return Math.sqrt(dat[2] * 10)
+                return Math.pow(dat[2] * 10 - 80, 2) / 3
               },
               label: {
                 emphasis: {
