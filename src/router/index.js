@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const MainL = () => import('../components/MainL.vue')
 const Theme = () => import('../components/Theme.vue')
-
+const Recommend = () => import('../components/Recommend.vue')
 const router = new VueRouter({
   routes: [{
     path: '/',
@@ -14,6 +14,9 @@ const router = new VueRouter({
   }, {
     path: '/theme',
     component: Theme
+  }, {
+    path: '/recommend',
+    component: Recommend
   }]
 })
 

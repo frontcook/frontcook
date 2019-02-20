@@ -15,7 +15,8 @@ export default {
     return {
       menus: [
         {name: '书单', path: '/'},
-        {name: '管理系统', path: '/theme'}
+        {name: '管理系统', path: '/theme'},
+        {name: '推荐', path: '/recommend'}
       ]
     }
   }
