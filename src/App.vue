@@ -26,10 +26,10 @@ body, html {
 }
 
 body {
-  background: -webkit-radial-gradient(circle, #b1d5e1, #c3d4da);
-  background: -o-radial-gradient(circle, #b1d5e1, #c3d4da);
-  background: -moz-radial-gradient(circle, #b1d5e1, #c3d4da);
-  background: radial-gradient(circle, #b1d5e1, #c3d4da);
+  background: -webkit-radial-gradient(circle, #b1d5e1, #e2e7e8);
+  background: -o-radial-gradient(circle, #b1d5e1, #e2e7e8);
+  background: -moz-radial-gradient(circle, #b1d5e1, #e2e7e8);
+  background: radial-gradient(circle, #b1d5e1, #e2e7e8);
   font-family: yaya, 'Times New Roman', Georgia, Serif;
 }
 

@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <ul>
-      <li></li>
+  <div class="all-wrapper">
+    <ul class="choice-lang-wrapper">
+      <li
+        v-for="lang in langArr"
+        :class="{'lang-active': selectValue === lang.name}"
+        @click="initData(lang.name)"
+        :key="lang.name">{{lang.label}}</li>
     </ul>
-    <div style="width: 600px;height: 500px;" ref="myEchart"></div>
+    <div class="chart" ref="myEchart"></div>
   </div>
 </template>
 
@@ -17,23 +21,26 @@ export default {
       selectValue: '',
       timeout: true,
       langArr: [{
-        name: ''
+        name: 'java',
+        label: 'java'
+      }, {
+        name: 'c++',
+        label: 'c/c++'
+      }, {
+        name: 'javascript',
+        label: 'js'
+      }, {
+        name: 'python',
+        label: 'python'
       }]
     }
   },
-  watch: {
-    selectValue (val) {
-      if (this.timeout) {
-        this.timeout = false
-        this.initData(val)
-        setTimeout(() => {
-          this.timeout = true
-        }, 400)
-      }
-    }
+  mounted () {
+    this.initData('java')
   },
   methods: {
     initData (item) {
+      this.selectValue = item
       jsonp('https://api.douban.com/v2/book/search?q=' + item + '&count=100', null, (err, data) => {
         if (err) {
           console.error(err.message)
@@ -65,7 +72,13 @@ export default {
           const options = {
             backgroundColor: 'rgba(255, 255, 255, 1)',
             title: {
-              text: this.selectValue + '书籍参与数和评分'
+              text: this.selectValue + '书籍参与数和评分',
+              textStyle: {
+                fontSize: 12,
+                fontFamily: 'yaya'
+              },
+              padding: [20, 100]
+
             },
             xAxis: {
               splitLine: {
@@ -125,3 +138,44 @@ export default {
   }
 }
 </script>
+<style>
+  .choice-lang-wrapper {
+    width: 50px;
+    float: left;
+
+  }
+  .choice-lang-wrapper li {
+    list-style: none;
+    width: 50px;
+    box-sizing: border-box;
+    height: 50px;
+    margin: 10px 0;
+    font-size: 12px;
+    line-height: 50px;
+    text-align: center;
+    background: #eeeeee;
+    border-radius: 15px;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+  }
+
+  .lang-active {
+    border: 2px solid #e56f79 !important;
+  }
+
+  .all-wrapper {
+    width: 800px;
+    margin: auto;
+  }
+
+  .chart {
+    float: right;
+    width: 650px;
+    height: 500px;
+    border-radius: 20px;
+    margin: auto;
+    overflow: hidden;
+  }
+</style>
