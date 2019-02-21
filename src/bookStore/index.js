@@ -4,8 +4,10 @@ import netStore from './net'
 import javaStore from './java'
 import pythonStore from './python'
 import otherStore from './other'
+import goStore from './go'
 
 const store = [
+  ...goStore,
   ...cStore,
   ...esStore,
   ...netStore,

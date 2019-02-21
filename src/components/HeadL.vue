@@ -16,7 +16,8 @@ export default {
       menus: [
         {name: '书单', path: '/'},
         {name: '管理系统', path: '/theme'},
-        {name: '推荐', path: '/recommend'}
+        {name: '推荐', path: '/recommend'},
+        {name: '开源', path: '/opensource'}
       ]
     }
   }

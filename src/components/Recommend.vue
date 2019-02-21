@@ -113,7 +113,7 @@ export default {
                 fontSize: 12,
                 fontFamily: 'yaya'
               },
-              padding: [20, 100]
+              padding: [20, 150]
 
             },
             xAxis: {
@@ -122,7 +122,9 @@ export default {
                   type: 'dashed'
                 }
               },
-              scale: true
+              name: '评分',
+              min: 8,
+              max: 10
             },
             yAxis: {
               splitLine: {
@@ -130,6 +132,7 @@ export default {
                   type: 'dashed'
                 }
               },
+              name: '参与人数',
               scale: true
             },
             series: [{

@@ -7,7 +7,10 @@ Vue.use(VueRouter)
 const MainL = () => import('../components/MainL.vue')
 const Theme = () => import('../components/Theme.vue')
 const Recommend = () => import('../components/Recommend.vue')
+
+const Opensource = () => import('../components/Opensource.vue')
 const router = new VueRouter({
+  mode: 'history',
   routes: [{
     path: '/',
     component: MainL
@@ -17,6 +20,9 @@ const router = new VueRouter({
   }, {
     path: '/recommend',
     component: Recommend
+  }, {
+    path: '/opensource',
+    component: Opensource
   }]
 })
 
