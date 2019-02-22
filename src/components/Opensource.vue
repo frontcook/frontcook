@@ -16,7 +16,7 @@ export default {
   name: 'Opensource',
   mounted () {
     this.init()
-    this.$http.get('static/resource/list.md')
+    this.$http.get('static/resource/Readme.md')
       .then(res => {
         this.$refs.marked.innerHTML = marked(res.data)
       })
