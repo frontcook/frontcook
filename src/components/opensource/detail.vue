@@ -1,6 +1,7 @@
 <template>
   <div class="detail-wrapper">
     <el-button
+      v-if="flagdata"
       type="primary"
       icon="el-icon-caret-left"
       @click="backList"
@@ -12,11 +13,16 @@
 import marked from 'marked'
 export default {
   name: 'detail-id',
+  data () {
+    return {
+      flagdata: false
+    }
+  },
   mounted () {
-    console.log(this.$route.params.id)
     this.$http.get(`/static/res/${this.$route.params.id}.txt`)
       .then(res => {
         this.$refs.mdData.innerHTML = marked(res.data)
+        this.flagdata = true
         const aList = Array.from(document.getElementsByTagName('a'))
         for (let i = 0; i < aList.length; i++) {
           aList[i].target = '__blank'
@@ -27,6 +33,9 @@ export default {
     backList () {
       this.$router.push({path: '/opensource'})
     }
+  },
+  destroyed () {
+    this.flagdata = false
   }
 }
 </script>
@@ -61,6 +70,9 @@ export default {
     width: 100%;
     height: 100%;
     transition: all 0.5s;
+  }
+  .detail-wrapper ul li a:visited {
+    outline: 0;
   }
   .detail-wrapper ul li a:hover {
     text-shadow: 1px 1px 1px #653939;
