@@ -4,6 +4,7 @@ import Vue from 'vue'
 
 Vue.use(VueRouter)
 
+const HeadL = () => import('../components/HeadL')
 const MainL = () => import('../components/MainL.vue')
 const Theme = () => import('../components/Theme.vue')
 const Recommend = () => import('../components/Recommend.vue')
@@ -14,22 +15,26 @@ const detail = () => import('../components/opensource/detail.vue')
 const router = new VueRouter({
   routes: [{
     path: '/',
-    component: MainL
-  }, {
-    path: '/theme',
-    component: Theme
-  }, {
-    path: '/recommend',
-    component: Recommend
-  }, {
-    path: '/opensource',
-    component: Opensource,
+    component: HeadL,
     children: [{
       path: '',
-      component: list
+      component: MainL
     }, {
-      path: 'detail/:id',
-      component: detail
+      path: 'theme',
+      component: Theme
+    }, {
+      path: 'recommend',
+      component: Recommend
+    }, {
+      path: 'opensource',
+      component: Opensource,
+      children: [{
+        path: '',
+        component: list
+      }, {
+        path: 'detail/:id',
+        component: detail
+      }]
     }]
   }]
 })

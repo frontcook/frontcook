@@ -19,7 +19,9 @@ export default {
     }
   },
   mounted () {
-    this.$http.get(`/static/res/${this.$route.params.id}.txt`)
+    this.$http.get(`${this.apiUrl}api/v1/back/opensource/detail`, {
+      params: {id: this.$route.params.id}
+    })
       .then(res => {
         this.$refs.mdData.innerHTML = marked(res.data)
         this.flagdata = true

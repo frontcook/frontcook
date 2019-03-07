@@ -60,15 +60,19 @@
 
 <script>
 // bookStore 为全部数据, bookStoreRender 为当前页渲染的数据, bookStoreSearch 为当前选择项下的所有数据
-import bookStore from '../bookStore'
+// import bookStore from '../bookStore'
 export default {
   name: 'main-l',
   mounted () {
-    this.initPage()
+    this.$http.get(`${this.apiUrl}api/v1/back/booklist`)
+      .then(res => {
+        this.bookStore = res.data
+        this.initPage()
+      })
   },
   data () {
     return {
-      bookStore,
+      bookStore: [],
       bookStoreRender: [],
       bookStoreSelect: [],
       inputbook: '',

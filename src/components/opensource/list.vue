@@ -13,7 +13,7 @@
 export default {
   name: 'list',
   mounted () {
-    this.$http.get('/static/res/list.json')
+    this.$http.get(`${this.apiUrl}api/v1/back/opensource/list`)
       .then(res => {
         this.datas = res.data.list
       })

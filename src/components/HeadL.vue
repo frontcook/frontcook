@@ -1,10 +1,13 @@
 <template>
-  <div class="title">
-    <ul class="title-book-list">
-      <li v-for="(menu, index) in menus" :key="index">
-        <router-link :to="menu.path" exact class="default-a">{{menu.name}}</router-link>
-      </li>
-    </ul>
+  <div>
+    <div class="title">
+      <ul class="title-book-list">
+        <li v-for="(menu, index) in menus" :key="index">
+          <router-link :to="menu.path" exact class="default-a">{{menu.name}}</router-link>
+        </li>
+      </ul>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 

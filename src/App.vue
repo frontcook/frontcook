@@ -1,17 +1,12 @@
 <template>
   <div>
-    <header-l />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HeaderL from './components/HeadL'
 export default {
-  name: 'App',
-  components: {
-    HeaderL
-  }
+  name: 'App'
 }
 </script>
 
