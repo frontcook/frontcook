@@ -21,7 +21,7 @@
     <ul class="main-book-lists">
       <li v-for="(book, item) in bookStoreRender" :key="item">
         <div>
-          <img :src="'static/bookimg/' + book.img" width="150" height="189">
+          <img :src="book.img" width="150" height="189">
         </div>
         <div class="book-name-wrapper">
           <span class="book-name" :title="book.name">{{book.name}}</span>
